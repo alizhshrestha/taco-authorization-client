@@ -1,0 +1,24 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          taco-admin-client-oidc:
+            provider: tacocloud
+            client-id: taco-admin-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect_uri: "http://127.0.0.1:8080/login/oauth2/code/{registrationId}"
+            scope: openid
+#            client-name: taco-admin-client-oidc
+          taco-admin-client-authorization-code:
+            provider: tacocloud
+            client-id: taco-admin-client
+            client-secret: secret
+            authorization-grant-type: authorization_code
+            redirect_uri: "http://127.0.0.1:8080/authorized"
+            scope: writeIngredients,deleteIngredients
+        provider:
+          tacocloud:
+#            issuer-uri: http://authserver:9000
+            issuer-uri: http://localhost:9000
